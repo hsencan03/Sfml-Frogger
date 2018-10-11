@@ -42,6 +42,9 @@ public:
 		{
 			switch (event.type)
 			{
+			case sf::Event::Close:
+				Game::isPlaying = false;
+				break;		
 			case sf::Event::KeyReleased:
 				switch (event.key.code)
 				{

@@ -46,7 +46,12 @@ public:
 
 	virtual void HandleEvent(sf::RenderWindow& window)
 	{
-
+		sf::Event event;
+		while(window.poolEvent(event))
+		{
+			if(event.type == sf::Event::Close)
+				Game::isPlaying = false;
+		}
 	}
 
 	virtual void Draw(sf::RenderWindow& window)

@@ -8,6 +8,8 @@
 
 class Game {
 public:
+	static bool isPlaying;		
+public:
 	Game(int width, int height, std::string title)
 	{
 		//Creating window
@@ -25,7 +27,6 @@ public:
 			m_cars.emplace_back(new Car("assets/car1.png", sf::Vector2f(m_window.getSize().x / 2, m_window.getSize().y / 2), 100, *m_frog));
 		}
 
-		isPlaying = true;
 		run();
 	}
 	~Game()
@@ -65,7 +66,9 @@ private:
 
 	void reset()
 	{
-		m_frog->setPosition(m_window.getPosition().x / 2, m_frog->getPosition().y);
+		m_frog->Reset();
+		for(int i = 0; i < m_cars.size(); i++)
+			m_cars[i]->Reset();
 	}
 
 private:
@@ -79,3 +82,5 @@ private:
 
 	sf::Music music;
 };
+
+Game::isPlaying = true;
