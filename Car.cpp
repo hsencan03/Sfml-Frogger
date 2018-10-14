@@ -3,7 +3,7 @@
 #include "Frog.hpp"
 
 Car::Car(std::string path, sf::Vector2f position, unsigned int speed, unsigned int rotation)
-	: m_mainPos{ position }, m_speed{ speed }
+	: m_mainPos{ position }, m_speed{ speed }, m_rotation{rotation}
 {
 	if (!m_texture.loadFromFile(path))
 	{
@@ -21,14 +21,21 @@ void Car::Update(sf::RenderWindow& window, float dt)
 
 	if (getPosition().x > window.getSize().x)
 		setPosition(0, m_mainPos.y);
+	else if (getPosition().x < 0)
+		setPosition(window.getSize().x, m_mainPos.y);
 
 	if (m_sprite.getGlobalBounds().intersects(Game::instance->m_frog->m_sprite.getGlobalBounds()))
 	{
 		std::cout << "Collision\n";
 		Game::instance->m_frog->Reset();
 	}
-
-	move(m_speed * dt, 0);
+	
+	if (m_rotation == 1)
+		move(m_speed * dt, 0);
+	else if (m_rotation == 2)
+		move(-1 * (m_speed * dt), 0);
+	else
+		std::cout << "Error rotation has to be 1 or 2\n";
 }
 
 void Car::HandleEvent(sf::RenderWindow& window)

@@ -15,10 +15,14 @@ Game::Game(int width, int height, std::string title)
 	}
 
 	m_frog = new Frog("assets/life.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y - 50));
-	for (int i = 0; i < 1; i++)
-	{
-		m_cars.emplace_back(new Car("assets/car1.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2), 100, 1));
-	}
+	
+	m_cars.emplace_back(new Car("assets/car1.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2 - 100), 100, 1));
+	m_cars.emplace_back(new Car("assets/car2.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2 - 50), 100, 2));
+	m_cars.emplace_back(new Car("assets/tractor.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2), 50, 1));
+	m_cars.emplace_back(new Car("assets/truck.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2 + 50), 75, 2));
+	m_cars.emplace_back(new Car("assets/car1.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2 + 100), 100, 1));
+	m_cars.emplace_back(new Car("assets/car3.png", sf::Vector2f(m_window->getSize().x / 2, m_window->getSize().y / 2 + 150), 100, 2));
+	
 }
 
 Game::~Game()

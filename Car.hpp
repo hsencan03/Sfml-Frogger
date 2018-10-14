@@ -33,4 +33,5 @@ private:
 	sf::Vector2f m_mainPos;
 
 	unsigned int m_speed;
+	unsigned int m_rotation;
 };
